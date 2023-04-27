@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Reservation Request</title>
+    <style>
+      form {
+        border: 2px solid black;
+        padding: 20px;
+        width: 60%;
+        margin: 0 auto;
+      }
+      fieldset {
+        border: 2px solid black;
+        padding: 15px;
+        margin-bottom: 10px;
+      }
+      legend {
+        font-weight: bold;
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body onpageshow="onPageShow()" onstorage="onStorage()">
+    <h1>Reservation Request</h1>
+    <form onsubmit="saveToLocalStorage(event)">
+      <fieldset>
+        <legend>General Information</legend>
+        <div class="form-group">
+          <label for="arrival-date">Arrival Date:</label>
+          <input
+            type="date"
+            id="arrival-date"
+            name="arrival-date"
+            required
+            oninvalid="this.setCustomValidity('Please enter a valid arrival date')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="form-group">
+          <label for="nights">Nights:</label>
+          <select
+            id="nights"
+            name="nights"
+            required
+            oninvalid="this.setCustomValidity('Please select the number of nights')"
+            oninput="this.setCustomValidity('')"
+          >
+            <option value="">--Select--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="adults">Adults:</label>
+          <select
+            id="adults"
+            name="adults"
+            required
+            oninvalid="this.setCustomValidity('Please select the number of adults')"
+            oninput="this.setCustomValidity('')"
+          >
+            <option value="">--Select--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="children">Children:</label>
+          <select id="children" name="children">
+            <option value="">--Select--</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Preferences</legend>
+        <div class="form-group">
+          <label>Room Type:</label>
+          <input
+            type="radio"
+            id="standard"
+            name="room-type"
+            value="standard"
+            required
+          />
+          <label for="standard">Standard</label>
+          <input type="radio" id="business" name="room-type" value="business" />
+          <label for="business">Business</label>
+          <input type="radio" id="suite" name="room-type" value="suite" />
+          <label for="suite">Suite</label>
+        </div>
+        <div class="form-group">
+          <label>Bed Type:</label>
+          <input type="radio" id="king" name="bed-type" value="king" required />
+          <label for="king">King</label>
+          <input
+            type="radio"
+            id="double-double"
+            name="bed-type"
+            value="double-double"
+          />
+          <label for="double-double">Double Double</label>
+        </div>
+        <div class="form-group">
+          <label>Smoking Preference:</label>
+          <input
+            type="radio"
+            id="smoking"
+            name="smoking-preference"
+            value="smoking"
+            required
+          />
+          <label for="smoking">Smoking</label>
+          <input
+            type="radio"
+            id="no-smoking"
+            name="smoking-preference"
+            value="no-smoking"
+          />
+          <label for="no-smoking">No Smoking</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Contact Information</legend>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            oninvalid="this.setCustomValidity('Please enter your name')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            oninvalid="this.setCustomValidity('Please enter a valid email address')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            oninvalid="this.setCustomValidity('Please enter a valid phone number')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+      </fieldset>
+      <button type="submit">Submit Reservation</button>
+      <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+    <h2>Reservation Details</h2>
+    <table id="reservation-table" border="1">
+      <thead>
+        <tr>
+          <th colspan="4">General Information</th>
+          <th colspan="3">Preferences</th>
+          <th colspan="3">Contact Information</th>
+          <th rowspan="2">Actions</th>
+        </tr>
+        <tr>
+          <th>Arrival Date</th>
+          <th>Nights</th>
+          <th>Adults</th>
+          <th>Children</th>
+          <th>Room Type</th>
+          <th>Bed Type</th>
+          <th>Smoking Preference</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      function onPageShow() {
+        console.log("Page has loaded.");
+      }
+
+      function onStorage() {
+        console.log("Storage event triggered.");
+      }
+
+      function saveToLocalStorage(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+        localStorage.setItem("reservationData", JSON.stringify(data));
+        event.target.reset();
+      }
+
+      function clearForm() {
+        document.querySelector("form").reset();
+      }
+     
+      function addReservationToTable(data) {
+        const table = document.querySelector("#reservation-table tbody");
+        const row = table.insertRow();
+
+        const arrivalDateCell = row.insertCell();
+        arrivalDateCell.textContent = data["arrival-date"];
+
+        const nightsCell = row.insertCell();
+        nightsCell.textContent = data.nights;
+
+        const adultsCell = row.insertCell();
+        adultsCell.textContent = data.adults;
+
+        const childrenCell = row.insertCell();
+        childrenCell.textContent = data.children;
+
+        const roomTypeCell = row.insertCell();
+        roomTypeCell.textContent = data["room-type"];
+
+        const bedTypeCell = row.insertCell();
+        bedTypeCell.textContent = data["bed-type"];
+
+        const smokingPreferenceCell = row.insertCell();
+        const smokingImage =
+          data["smoking-preference"] === "smoking"
+            ? "smoking-area.png"
+            : "non-smoking-area.png";
+        smokingPreferenceCell.innerHTML = `<img src="${smokingImage}" alt="${data["smoking-preference"]}" width="20" height="20">`;
+
+        const nameCell = row.insertCell();
+        nameCell.textContent = data.name;
+
+        const emailCell = row.insertCell();
+        emailCell.textContent = data.email;
+
+        const phoneCell = row.insertCell();
+        phoneCell.textContent = data.phone;
+
+        const actionsCell = row.insertCell();
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.onclick = function () {
+          if (confirm("Are you sure you want to remove this reservation?")) {
+            // Remove the reservation from the table
+            row.remove();
+
+            // Remove the reservation from local storage
+            const reservations = JSON.parse(
+              localStorage.getItem("reservations") || "[]"
+            );
+            const updatedReservations = reservations.filter(
+              (r) => r.email !== data.email
+            );
+            localStorage.setItem(
+              "reservations",
+              JSON.stringify(updatedReservations)
+            );
+          }
+        };
+        actionsCell.appendChild(removeButton);
+      }
+
+      // Load the reservations from local storage and add them to the table
+      function loadReservations() {
+        const reservations = JSON.parse(
+          localStorage.getItem("reservations") || "[]"
+        );
+        reservations.forEach(addReservationToTable);
+      }
+
+      // Update the saveToLocalStorage function to handle multiple reservations
+      function saveToLocalStorage(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        // Save the reservation to local storage
+        const reservations = JSON.parse(
+          localStorage.getItem("reservations") || "[]"
+        );
+        reservations.push(data);
+        localStorage.setItem("reservations", JSON.stringify(reservations));
+        // Add the reservation to the table
+        addReservationToTable(data);
+
+        // Clear the form
+        event.target.reset();
+      }
+
+      // Call the loadReservations function when the page loads
+      window.addEventListener("DOMContentLoaded", loadReservations);
+    </script>
+  </body>
+</html>
+ 
