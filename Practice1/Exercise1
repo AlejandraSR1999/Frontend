@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Example HTML page with header, nav, aside, article and footer"> 
+  <meta name="keywords" content="HTML, CSS, JavaScript, tutorial"> 
+  <meta name="author" content="Alejandra Salazar">
+  <title>Exercise 1</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link
+      rel="icon"
+      type="image/x-icon"
+      href="favicon-16x16.png"
+    />
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #B1B2FF;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav {
+      background-color: #D7BDE2 ;
+      padding: 15px;
+      width: 25%;
+      order: 1;
+    }
+    article {
+      background-color: #D1F2EB;
+      padding: 15px;
+      width: 50%;
+      order: 2;
+    }
+    aside {
+      background-color: #C39BD3;
+      padding: 15px;
+      width: 25%;
+      order: 3;
+    }
+    footer {
+      background-color: #EEF1FF;
+      padding: 20px;
+      text-align: center;
+    }
+  </style> 
+</head>
+<body>
+  <header>
+    <h1>HTML5 Semantics and Flexbox</h1>
+  </header>
+  <div class="container">
+    <nav>
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="https://htmlcolorcodes.com/es/" target="_blank">Want some resources for color codes?</a></li>
+        <li><a href="https://www.w3schools.com/html/" target="_blank">Here we have some HTML tutorials for you</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank">Lets look HTML basics with this documentation page</a></li>
+      </ul>
+    </nav>
+    <article>
+      <h2>About This Page</h2>
+      <p>
+        At its heart, HTML is a language made up of elements, which can be applied to pieces of text to give them different meaning in a document 
+        (Is it a paragraph? Is it a bulleted list? Is it part of a table?), structure a document into logical sections (Does it have a header? Three columns of content? A navigation menu?),
+        and embed content such as images and videos into a page. This module will introduce the first two of these and introduce fundamental concepts and syntax you need to know to understand HTML.
+      </p>
+    </article>
+    <aside>
+      <h3>HTML</h3>
+      <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages and web applications. It structures content on the web using elements represented by tags.</p>
+      <h4>CSS</h4>
+      <p>CSS (Cascading Style Sheets) is a stylesheet language used for describing the look and formatting of a document written in HTML. It allows for the separation of presentation and content, including layout, colors, and fonts.</p>
+      <h4>URL</h4>
+      <p>A URL (Uniform Resource Locator) is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. URLs are used to locate web pages, images, videos, and other resources on the web.</p>
+    </aside>
+  </div>
+  <footer>
+    <p>My Footer &copy; 2023</p>
+  </footer>
+</body>
+</html>
