@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Web Page</title>
+<link rel="stylesheet" href="website.css">
+<script defer src="website.js"></script>
+</head>
+<body class="preload">
+    <header class="header">
+        <button class="header__button" id="btnNav" type="button">
+            <img src="list_black_24dp.svg" alt="Toggle Sidebar" width="30" height="30">
+        </button>
+        <div class="header__title">My WebPage</div>
+    </header>
+    <nav class="nav">
+        <div class="nav__links">
+            <a href="#" class="nav__link">
+                <img src="dashboard_black_24dp.svg" alt="Dashboard" width="30" height="30">
+                    Dashboard
+            </a>
+            <a class="nav__link nav__link--active" href="#">
+                <img src="person_black_24dp.svg" alt="Projects" width="30" height="30">
+                    Profile
+            </a>
+            <a class="nav__link" href="#">
+                <img src="lock_black_24dp.svg" alt="Security" width="30" height="30">
+                    Security
+            </a>
+            <a class="nav__link" href="#">
+                <img src="history_black_24dp.svg" alt="History" width="30" height="30">
+                    History
+            </a>
+            <a class="nav__link" href="#">
+                <img src="logout_black_24dp.svg" alt="Profile" width="30" height="30">
+                    Logout 
+            </a>
+        </div>
+        <div class="nav__overlay"></div>
+    </nav>
+    <main>
+        Hi my name is Ale
+    </main>
+</body>
+</html>
