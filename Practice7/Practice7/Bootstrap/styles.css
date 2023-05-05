@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.blog-item {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-item .category {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.blog-item .title {
+    margin-top: 10px;
+}
+
+.blog-item .summary {
+    margin-top: 10px;
+    flex-grow: 1;
+}
