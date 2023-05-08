@@ -1,0 +1,41 @@
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+.board__label {
+  color: #007bff;
+  font-size: 5em;
+}
+
+.header {
+  text-align: center;
+  color: #007bff;
+}
+
+.btn-section {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.btn-section__btn {
+  width: 150px;
+  height: 100px;
+  border: none;
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 5px;
+}
+
+.container {
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #e6e6e6;
+}
+
+/*# sourceMappingURL=counter.css.map */
