@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <button id="chat-button"><i class="fas fa-comments"></i></button>
+    <div id="chat-container" style="display: none">
+      <div id="messages"></div>
+      <form id="message-form">
+        <input type="text" id="message-input" placeholder="Your message..." />
+        <button type="submit" id="send-button">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+    <script>
+      function showMessage(text, isMine = false) {
+        document.getElementById("messages").innerHTML += `
+            <div class="message-row ${isMine ? "mine" : "theirs"}">
+                <div class="bubble">${text}</div>
+            </div>
+          `;
+      }
+      const ws = new WebSocket("ws://localhost:8080");
+      ws.addEventListener("message", (ev) => {
+        if (typeof ev.data === "string") {
+          showMessage(ev.data);
+        } else {
+          // Blob or ArrayBuffer
+          const reader = new FileReader();
+          reader.addEventListener("loadend", (e) => {
+            const text = e.srcElement.result;
+            showMessage(text);
+          });
+          reader.readAsText(ev.data);
+        }
+      });
+
+      document.querySelector("form").onsubmit = (ev) => {
+        ev.preventDefault();
+        const input = document.querySelector("input");
+        ws.send(input.value);
+        showMessage(input.value, true);
+        input.value = "";
+      };
+
+      document.getElementById("chat-button").onclick = function () {
+        var chatContainer = document.getElementById("chat-container");
+        if (chatContainer.style.display === "none") {
+          chatContainer.style.display = "block";
+        } else {
+          chatContainer.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

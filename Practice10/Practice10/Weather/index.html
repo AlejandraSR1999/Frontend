@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bolivia Weather</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Check the weather in Bolivia</h1>
+  <select id="citySelect">
+    <option>Select a city</option>
+    <option value="La Paz">La Paz</option>
+    <option value="Santa Cruz">Santa Cruz</option>
+    <option value="Cochabamba">Cochabamba</option>
+    <option value="Sucre">Sucre</option>
+    <option value="Potosi">Potosí</option>
+    <option value="Oruro">Oruro</option>
+    <option value="Tarija">Tarija</option>
+    <option value="Pando">Pando</option>
+  </select>
+  <div id="weatherContainer">
+    <div class="icon sun-shower" id="loadingSpinner">
+      <div class="sun">
+        <div class="rays"></div>
+        <div class="rays"></div>
+        <div class="rays"></div>
+        <div class="rays"></div>
+        <div class="rays"></div>
+        <div class="rays"></div>
+      </div>
+    </div>
+    <div id="weatherInfo"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

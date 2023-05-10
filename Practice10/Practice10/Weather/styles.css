@@ -1,0 +1,104 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+h1 {
+  color: #333;
+  padding: 20px;
+}
+
+#citySelect {
+  padding: 10px;
+  font-size: 16px;
+  margin: 20px;
+}
+
+#weatherContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 100px); 
+}
+
+#loadingSpinner {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 12em;
+  height: 10em;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  margin: -1.25em;
+  background: #000000;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.375em #000000;
+  animation: spin 12s infinite linear;
+}
+
+.rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0.375em;
+  height: 1.125em;
+  margin-left: -0.1875em;
+  background: #000000;
+  border-radius: 0.25em;
+  box-shadow: 0 5.375em #000000;
+}
+
+.rays:nth-child(2) {
+  transform: rotate(60deg);
+}
+.rays:nth-child(3) {
+  transform: rotate(120deg);
+}
+
+.rays:nth-child(4) {
+  transform: rotate(180deg);
+}
+
+.rays:nth-child(5) {
+  transform: rotate(240deg);
+}
+
+.rays:nth-child(6) {
+  transform: rotate(300deg);
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#weatherInfo {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 50%; 
+  text-align: center;
+}
