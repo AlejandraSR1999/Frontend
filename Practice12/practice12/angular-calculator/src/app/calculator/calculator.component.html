@@ -1,0 +1,31 @@
+<div class="calculator">
+    <div>
+        <input class="display-box" type="text" [value]="result$ | async" disabled />
+        <input type="button" value="C" (click)="clear()" id="btn" />
+      </div>
+    <div>
+      <input type="button" value="1" (click)="display('1')" />
+      <input type="button" value="2" (click)="display('2')" />
+      <input type="button" value="3" (click)="display('3')" />
+      <input type="button" value="/" (click)="display('/')" />
+    </div>
+    <div>
+      <input type="button" value="4" (click)="display('4')" />
+      <input type="button" value="5" (click)="display('5')" />
+      <input type="button" value="6" (click)="display('6')" />
+      <input type="button" value="-" (click)="display('-')" />
+    </div>
+    <div>
+      <input type="button" value="7" (click)="display('7')" />
+      <input type="button" value="8" (click)="display('8')" />
+      <input type="button" value="9" (click)="display('9')" />
+      <input type="button" value="+" (click)="display('+')" />
+    </div>
+    <div>
+      <input type="button" value="." (click)="display('.')" />
+      <input type="button" value="0" (click)="display('0')" />
+      <input type="button" value="=" (click)="calculate()" id="btn" />
+      <input type="button" value="*" (click)="display('*')" />
+    </div>
+  </div>
+  
